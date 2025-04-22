@@ -1,0 +1,12 @@
+{
+  "name": "qa-dojo-practice",
+  "version": "1.0.0",
+  "description": "",
+  "author": "Olha Rymarieva",
+  "license": "ISC",
+  "devDependencies": {
+    "@playwright/test": "^1.50.1",
+    "@types/node": "^22.13.8",
+    "is-even-check-new": "^1.0.1"
+  }
+}
