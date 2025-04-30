@@ -8,5 +8,8 @@
     "@playwright/test": "^1.50.1",
     "@types/node": "^22.13.8",
     "is-even-check-new": "^1.0.1"
+  },
+  "dependencies": {
+    "@faker-js/faker": "^9.7.0"
   }
 }

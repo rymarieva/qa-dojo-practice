@@ -9,17 +9,15 @@ export class ArticleEditorPage extends BasePage {
 
     constructor(page: Page) {
         super(page);
-        this.titleLocator = page.locator('[data-qa-id="editor-title"]');
+        this.titleLocator =  page.locator('[data-qa-id="editor-title"]');
         this.descriptionLocator = page.locator(`[data-qa-id="editor-description"]`);
         this.bodyLocator = page.getByRole("textbox", { name: "Write your article" });
         this.publishArticleButtonLocator = page.locator(`//button[@type="submit"]`);
     }
 
-    async goto() {
-        await this.page.goto("/editor");
-    }
 
-    async editArticle(articleData: {
+
+    async fillArticle(articleData: {
         title: string;
         description: string;
         body: string;
