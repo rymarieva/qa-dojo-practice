@@ -6,7 +6,7 @@ import { ArticlesPage } from "../../../app-learnwebdriverio/Pages/ArticlePage";
 import { faker } from "@faker-js/faker";
 
 test('01-1 Register user with valid data', async ({ page }) => {
-    const testUserData = { username: "nf313311322333nfnfnf", email: "o.ry222mf333311333hfhf@gmail.com", pass: "pass" }
+    const testUserData = { username: "nf3133333e1322333nfnfnf", email: "o.ry222mf333311333hfhf@gmail.com", pass: "pass" }
     const signUpPage = new SignUpPage(page);
     const homePage = new HomePage(page);
     await signUpPage.goto();
