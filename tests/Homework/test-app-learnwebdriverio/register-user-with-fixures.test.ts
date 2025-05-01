@@ -41,3 +41,35 @@ test('01-3 Register user and create article', async ({ signUpPage, articleCreati
     expect(await articlePage.getArticleHeaderTitle()).toContain(testArticleData.title);
 })
 
+
+test.skip('try saving storage session', async ({ page, context, signUpPage }) => {
+    const testUserData =
+    {
+        username: faker.person.lastName(),
+        email: faker.internet.email(),
+        pass: "pass"
+    }
+
+    await signUpPage.goto();
+    await signUpPage.registerUser(testUserData);
+    await page.waitForTimeout(1000);
+    await context.storageState({ path: 'tests/Homework/test-app-learnwebdriverio/state.json' })
+
+})
+
+test.skip('use saved storage session', async ({ browser }) => {
+    const testUserData =
+    {
+        username: faker.person.lastName(),
+        email: faker.internet.email(),
+        pass: "pass"
+    }
+    const context = await browser.newContext({
+        storageState: "tests/Homework/test-app-learnwebdriverio/state.json",
+    })
+
+    const page = await context.newPage();
+
+    await page.goto('https://demo.learnwebdriverio.com');
+
+})
