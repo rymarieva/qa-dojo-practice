@@ -47,7 +47,7 @@ export class SignUpPage extends BasePage {
         await this.setEmail(registrationData.email);
         await this.setPassword(registrationData.pass);
         await this.clicksignUpButton();
-        await this.page.waitForTimeout(1000)
+        await this.page.waitForResponse("**/api/users");
     }
 }
 

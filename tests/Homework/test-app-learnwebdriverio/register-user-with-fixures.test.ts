@@ -1,6 +1,7 @@
 import { expect, Page } from "@playwright/test";
 import { test } from "../../../app-learnwebdriverio/Fixures/fixture.ts";
 import { faker } from "@faker-js/faker";
+import { SignUpPage } from "../../../app-learnwebdriverio/Pages/SignUpPage.ts";
 
 test('02-1 Register user with valid data with fixture', async ({ signUpPage, homePage }) => {
     const testUserData =
@@ -42,20 +43,21 @@ test('01-3 Register user and create article', async ({ signUpPage, articleCreati
 })
 
 
-test.skip('try saving storage session', async ({ page, context, signUpPage }) => {
+test('try saving storage session', async ({ page}) => {
     const testUserData =
     {
         username: faker.person.lastName(),
         email: faker.internet.email(),
         pass: "pass"
     }
-
+    const signUpPage = new SignUpPage(page);
     await signUpPage.goto();
     await signUpPage.registerUser(testUserData);
-    await page.waitForTimeout(1000);
-    await context.storageState({ path: 'tests/Homework/test-app-learnwebdriverio/state.json' })
+    //await page.waitForResponse("**/api/users");
+    await page.context().storageState({ path: 'tests/Homework/test-app-learnwebdriverio/state.json' })
 
 })
+
 
 test.skip('use saved storage session', async ({ browser }) => {
     const testUserData =
@@ -69,6 +71,13 @@ test.skip('use saved storage session', async ({ browser }) => {
     })
 
     const page = await context.newPage();
+
+    await page.goto('https://demo.learnwebdriverio.com');
+
+})
+
+test.use({storageState: "tests/Homework/test-app-learnwebdriverio/state.json"})
+test('use saved storage session 2', async ({ page }) => {
 
     await page.goto('https://demo.learnwebdriverio.com');
 
